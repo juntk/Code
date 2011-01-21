@@ -11,4 +11,4 @@ def foo(n)
 	end
 end
 
-foo(10)
+foo(100)
