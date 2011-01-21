@@ -2,7 +2,7 @@ def foo(n)
 	1.upto(n) do |num|
 		print num
 		if num % 5 == 0 then
-			puts ''
+			puts
 		elsif num == n then
 			return
 		else
