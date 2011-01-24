@@ -18,8 +18,9 @@ class Enlarger
         @bf[:OffBits] = f.read(4)
 
         #BMPINFOHEADER
-        @bcSize = f.read(4).unpack("L*")
-        case @bcSize[0]
+        @bcSize = f.read(4)
+        tmp_bcSize = @bcSize.unpack("L*")
+        case tmp_bcSize[0]
         when 12
             @infoHeaderType = 'BITMAPCOREHEADER'
         when 40
@@ -46,7 +47,10 @@ class Enlarger
             @bi[:ClrUsed] = f.read(4)
             @bi[:CirImportant] = f.read(4)
         end
+        
+        data = f.read()
         f.close()
+        return data
     end
     def out
         puts "FileHeader:"
@@ -75,8 +79,36 @@ class Enlarger
             puts
         end
     end
+   
+    def makeBmpData(data)
+    	bmp = ''
+    	# add FileHEader
+    	@bf.each do |k, v|
+    		bmp += v
+    	end
+    	bmp += @bcSize
+    	# add InfoHeader
+    	if @infoHeaderType == 'BITMAPCOREHEADER' then
+            @bc.each do |k, v|
+            	bmp += v
+            end
+        elsif @infoHeaderType == 'BITMAPINFOHEADER'
+            @bi.each do |k, v|
+            	bmp += v
+            end
+        end
+        
+        bmp += data
+        return bmp
+    end
+    def save(path,data)
+    	f = open(path,'wb')
+    	f.write(data)
+    	f.close()
+    end
 end
 
 enl = Enlarger.new
-enl.read('dog.bmp')
+data = enl.read('dog.bmp')
 enl.out
+enl.save('save.bmp',enl.makeBmpData(data))
