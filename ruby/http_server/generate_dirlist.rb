@@ -1,5 +1,5 @@
 # ボツコード
-# 動かないよ
+# 使えない子
 
 class Generate_DirList
     attr_accessor :html
