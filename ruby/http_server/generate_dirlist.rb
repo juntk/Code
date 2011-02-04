@@ -1,3 +1,5 @@
+# ボツコード
+
 class Generate_DirList
     attr_accessor :html
     def initialize(dir_path)
