@@ -1,6 +1,6 @@
 #!ruby
 require "socket"
-require "generate_dirlist.rb"
+#require "generate_dirlist.rb"
 
 class My_HTTP
 	def initialize
