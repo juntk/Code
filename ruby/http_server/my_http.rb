@@ -1,5 +1,6 @@
 #!ruby
 require "socket"
+require "generate_dirlist.rb"
 
 class My_HTTP
 	def initialize
@@ -88,7 +89,9 @@ EOS
     def require_parser(header)
         array = header.split(' ')
         # kaku chou si
-        if array[1] == '/' then array[1] = '/index.html' end
+        if array[1] == "/" then
+            array[1] = '/index.html'
+        end
         extension = array[1].split('.')[1]
         puts extension
         return {:type=>array[0],:path=>array[1],:version=>array[2],:extension=>extension}
