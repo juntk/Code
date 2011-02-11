@@ -8,6 +8,7 @@ require 'hpricot'
 require 'open-uri'
 
 class Favotter
+    attr_accessor :save_dir
     def initialize
         @favotter_uri = 'http://favotter.net/'
         # アイコンとログの保存先
@@ -58,7 +59,6 @@ class Favotter
             puts
             p $?
         end
-        puts 'complete'
     end
     def write_log(array)
         body = ''
@@ -104,8 +104,8 @@ class Favotter
 end
 
 def start
-    puts 'get'
     fav = Favotter.new
+    system('notify-send -i ' + fav.save_dir + 'favicon.png "favotter.rb" "getting"')
     new_data = fav.get
     old_data = fav.read_log
 
@@ -114,6 +114,7 @@ def start
     fav.show_notify(diff_data)
 
     fav.write_log(new_data)
+    system('notify-send -i ' + fav.save_dir + 'favicon.png "favotter.rb" "end"')
 end
 
 while true do
