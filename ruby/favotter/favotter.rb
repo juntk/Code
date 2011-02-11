@@ -1,7 +1,7 @@
 #!ruby
 
-# libnotify_bin が必要です。
-# apt-get install libnotify_bin
+# libnotify-bin が必要です。
+# apt-get install libnotify-bin
 
 require 'rubygems'
 require 'hpricot'
@@ -10,6 +10,7 @@ require 'open-uri'
 class Favotter
     def initialize
         @favotter_uri = 'http://favotter.net/'
+        # アイコンとログの保存先
         @save_dir = '/home/ats/ruby/favotter/'
         @hpricot = Hpricot(open(@favotter_uri).read)
     end
@@ -46,8 +47,8 @@ class Favotter
     end
     def show_notify(array)
         # ubuntu ポップアップ通知
-        # libnotify_bin が必要です。
-        # apt-get install libnotify_bin
+        # libnotify-bin が必要です。
+        # apt-get install libnotify-bin
         array.each do |hash|
             title = hash[:user_id] + '/' + hash[:user_name]
             body = hash[:status_text]
