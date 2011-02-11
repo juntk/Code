@@ -16,7 +16,7 @@ Content-Type: text/html;
 EOS
         @htdocs = '/home/ats/ruby/http_server/htdocs'
 		@port = 8000
-		@gs = TCPServer.open("localhost",@port)
+		@gs = TCPServer.open('',@port)
 		@socket = [@gs]
 		@addr = @gs.addr
 		puts @addr.shift
