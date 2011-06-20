@@ -1,0 +1,15 @@
+<div id="status_36030025295872000" class="entry xfolkentry hentry  "> 
+  <div class="thumb"> 
+    <a href="/user/satodaidai"><img class="user_icon " src="http://a2.twimg.com/profile_images/1218801763/f6824a00b6f91b7d55c1da570e7de698_normal.jpeg" alt="satodaidai"></a> 
+  </div> 
+  <div class="bubble entry-title entry-content LV3 "> 
+    <span class=" status_text description">佐久間さん、優勝おめでとうございます。ファイヤー！！</span> 
+  </div> 
+  <div class="info"> 
+    <span class="non-fav" id="fav-36030025295872000" ></span> 
+      <strong> 
+        <a title="satodaidai" href="http://twitter.com/satodaidai">satodaidai</a>/グランジ 大
+      </strong> 
+      <a class="taggedlink" rel="bookmark" href="/status.php?id=36030025295872000"><abbr class="updated" title="2011-02-11T20:53:22+0900" />2011-02-11 20:53:22</abbr></a><a class="taggedlink" href="http://twitter.com/satodaidai/status/36030025295872000"><img src="/img/twitter_favicon.png"></a> 
+      <span class="favotters"> 3 favs by		  <a href="/user/luv123ky"><img class="fav_icon " src="http://a1.twimg.com/profile_images/1240146144/icon7410537698620622392icon8581125830763256619_L16_mini.jpg" alt="luv123ky" title="luv123ky"></a>		  <a href="/user/lc0720"><img class="fav_icon " src="http://a2.twimg.com/profile_images/1240154073/8ebce9_mini.jpg" alt="lc0720" title="lc0720"></a>		  <a href="/user/miiichan1203"><img class="fav_icon " src="http://a3.twimg.com/profile_images/1208739510/2011010708180000_mini.jpg" alt="miiichan1203" title="miiichan1203"></a>   </span> 
+ </div></div>
