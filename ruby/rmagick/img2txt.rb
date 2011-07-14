@@ -9,7 +9,7 @@ class Img2txt
         @img.colorspace = RGBColorspace
     end
     def get_rgb_array()
-        p_size = 2
+        p_size = 1.75
         array = []
         img = @img
         puts img.colorspace
@@ -46,7 +46,12 @@ class Img2txt
         return array
     end
     def generate_text(array)
-        tag = '<html><head><link href="./style.css" rel="stylesheet" type="text/css"></head><body><div>'
+        mark = '@'
+        tag = '<html><head><link href="./style.css" rel="stylesheet" type="text/css">'
+        tag += '<meta http-equiv="Content-Type" content="text/html" charset="utf-8">'
+        tag += '<script type="text/javascript" src="./script.js"></script></head><body>'
+        tag += '<form><input type="button" onClick="clicked()" value="visible"></input></form>'
+        tag += '<div id="a" width="1000">'
         array.size.times do |y|
             tag += '<div>' 
             array[y].size.times do |x|
@@ -54,10 +59,10 @@ class Img2txt
                 od = array[y][x-1]
                 # もし前の配列の色データと一緒なら、タグは含めない
                 if x != 0 and d[:r] == od[:r] and  d[:r] == od[:r] and  d[:r] == od[:r] then
-                    tag += '@'
+                    tag += mark
                 else
                     tag += '</s><s style="color:#' + d[:r].to_s(16) + d[:g].to_s(16) + d[:b].to_s(16) + '">'
-                    tag += '@'
+                    tag += mark 
                 end
             end
             tag += '</div>'

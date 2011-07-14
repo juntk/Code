@@ -1,8 +1,12 @@
-s {
+s, #a {
         font-size: 1mm !important;
         letter-spacing: 0px;
         word-spacing: 0px;
         line-height: 100%;
         layout-grid-line: none;
         layout-grid-char: none;
+}
+
+#a {
+    visibility: hidden;
 }
