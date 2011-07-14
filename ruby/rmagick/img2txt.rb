@@ -9,13 +9,12 @@ class Img2txt
         @img.colorspace = RGBColorspace
     end
     def get_rgb_array()
-        p_size = 1.75
+        p_size = 1
         array = []
         img = @img
         puts img.colorspace
         puts img.rows
         puts img.columns
-        sleep(3)
         y = 0
         while y < img.rows / p_size
             x = 0
