@@ -6,7 +6,6 @@
 :set showmatch
 :set laststatus=2
 
-
 :syntax on
 ":set smartindent
 :set expandtab

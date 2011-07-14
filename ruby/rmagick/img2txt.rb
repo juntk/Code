@@ -9,16 +9,19 @@ class Img2txt
         @img.colorspace = RGBColorspace
     end
     def get_rgb_array()
-        p_size = 10
+        p_size = 2
         array = []
         img = @img
         puts img.colorspace
+        puts img.rows
+        puts img.columns
+        sleep(3)
         y = 0
-        while y < img.rows
+        while y < img.rows / p_size
             x = 0
 
             array_tmp = []
-            while x < img.columns
+            while x < img.columns / p_size
                 tr, tg, tb = Array.new, Array.new, Array.new
                 for ty in 0..p_size
                     for tx in 0..p_size
@@ -30,11 +33,9 @@ class Img2txt
                 end
                 # 配列tmpの平均値を配列arrayに入れる
                 tmp = {}
-                tmp[:r] = tr.inject(0){|r,i| r+=i}/tr.size
-                tmp[:g] = tg.inject(0){|r,i| r+=i}/tg.size
-                tmp[:b] = tb.inject(0){|r,i| r+=i}/tb.size 
-                tmp[:x] = x / p_size
-                tmp[:y] = y / p_size
+                tmp[:r] = tr.inject(0){|r,i| r+=i}/tr.size/256
+                tmp[:g] = tg.inject(0){|r,i| r+=i}/tg.size/256
+                tmp[:b] = tb.inject(0){|r,i| r+=i}/tb.size/256
 
                 array_tmp << tmp
                 x += p_size
@@ -45,21 +46,34 @@ class Img2txt
         return array
     end
     def generate_text(array)
-        tag = '<div>\n'
+        tag = '<html><head><link href="./style.css" rel="stylesheet" type="text/css"></head><body><div>'
         array.size.times do |y|
-            tag += '<div>\n' 
-            y.size.times do |x|
-                puts x,y
+            tag += '<div>' 
+            array[y].size.times do |x|
                 d = array[y][x] 
-                tag += '<span style="color; #' + d[:r].to_s(16) + d[:g].to_s(16) + d[:b].to_s(16) + ';">@</span>\n'
+                od = array[y][x-1]
+                # もし前の配列の色データと一緒なら、タグは含めない
+                if x != 0 and d[:r] == od[:r] and  d[:r] == od[:r] and  d[:r] == od[:r] then
+                    tag += '@'
+                else
+                    tag += '</s><s style="color:#' + d[:r].to_s(16) + d[:g].to_s(16) + d[:b].to_s(16) + '">'
+                    tag += '@'
+                end
             end
-            tag += '</div>\n'
+            tag += '</div>'
+            puts y
         end
-        tag += '</div>\n'
+        tag += '</div></html>'
 
         return tag
+    end
+    def out(data)
+        f = File.open("ruby/rmagick/img.html",'w')
+        f.write(data)
+        f.close
     end
 end
 
 i = Img2txt.new
-puts i.generate_text(i.get_rgb_array)
+data = i.generate_text(i.get_rgb_array)
+i.out(data)

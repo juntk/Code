@@ -79,7 +79,7 @@ class Sample
         @zoom = -5.0
 
         GLUT.InitWindowPosition(100,100)
-        GLUT.InitWindowSize(320,240)
+        GLUT.InitWindowSize(640,480)
         GLUT.Init
         GLUT.InitDisplayMode(GLUT::GLUT_DOUBLE | GLUT::GLUT_RGB | GLUT::GLUT_DEPTH)
         GLUT.CreateWindow("ruby-opengl 01")

@@ -2,7 +2,7 @@ require "rubygems"
 require "RMagick"
 
 include Magick
-img = ImageList.new('ruby/image/dog.bmp')
+img = ImageList.new('ruby/rmagick/dog.bmp')
 
 img2 = ImageList.new
 img2.new_image(img.columns, img.rows)
@@ -18,4 +18,6 @@ end
 img2.display
 
 exit
+
+
 
