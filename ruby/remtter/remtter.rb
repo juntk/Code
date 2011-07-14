@@ -3,6 +3,12 @@ require 'rubygems'
 require 'twitter'
 
 class Remtter
+	def initialize
+		if not File.exist?('followers') then
+			save_followers
+		end
+	end
+
 	def save_followers
 		Io_text.setPath('followers')
 		followers = Twitter.follower_ids(ARGV[0].to_s)
@@ -38,7 +44,12 @@ class Remtter
 	def get_usernames(array)
 		names = []
 		array.each do |l|
-			names << Twitter.user(l.to_i)['screen_name']
+			begin
+				names << Twitter.user(l.to_i)['screen_name']
+			rescue Exception => e
+				puts "ERROR"
+                puts e
+			end
 		end
 		
 		return names
@@ -57,7 +68,9 @@ names.each do |l|
 end
 
 # overwrite?
-if ARGV[1] == 'y' then
+puts 'Do you want to overwrite the followers list? (y/n):'
+
+if STDIN.gets.sub(/\n/,'') == 'y' then
 	puts 'overwriting...'
 	rm.save_followers
 end
