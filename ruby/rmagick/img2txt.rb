@@ -4,14 +4,14 @@ require 'RMagick'
 include Magick
 
 class Img2txt
+    attr_reader :img
     def initialize()
         @img = Magick::ImageList.new('ruby/rmagick/smile.jpg')
         @img.colorspace = RGBColorspace
     end
-    def get_rgb_array()
+    def get_rgb_array(img)
         p_size = 2
         array = []
-        img = @img
         puts img.colorspace
         puts img.rows
         puts img.columns
@@ -44,13 +44,9 @@ class Img2txt
         end
         return array
     end
-    def generate_text(array)
+    def generate_text(array,count_id)
         mark = '@'
-        tag = '<html><head><link href="./style.css" rel="stylesheet" type="text/css">'
-        tag += '<meta http-equiv="Content-Type" content="text/html" charset="utf-8">'
-        tag += '<script type="text/javascript" src="./script.js"></script></head><body>'
-        tag += '<form><input type="button" onClick="clicked()" value="visible"></input></form>'
-        tag += '<div id="a" width="1000">'
+        tag = '<div id="' + count_id + '" width="1000">'
         array.size.times do |y|
             tag += '<div>' 
             array[y].size.times do |x|
@@ -78,6 +74,12 @@ class Img2txt
     end
 end
 
+# html 出力用
+data = '<html><head><link href="./style.css" rel="stylesheet" type="text/css">'
+data += '<meta http-equiv="Content-Type" content="text/html" charset="utf-8">'
+data += '<script type="text/javascript" src="./script.js"></script></head><body>'
+data += '<form><input type="button" onClick="clicked()" value="visible"></input></form>'
+
 i = Img2txt.new
-data = i.generate_text(i.get_rgb_array)
+data += i.generate_text(i.get_rgb_array(i.img),'a')
 i.out(data)
