@@ -1,0 +1,18 @@
+!SESSION 2011-09-05 06:28:03.384 -----------------------------------------------
+eclipse.buildId=M20100211-1343
+java.version=1.6.0_22
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=ja_JP
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.core.resources 2 10035 2011-09-05 06:28:05.883
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2011-09-05 06:31:44.692 -----------------------------------------------
+eclipse.buildId=M20100211-1343
+java.version=1.6.0_22
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=ja_JP
+Command-line arguments:  -os linux -ws gtk -arch x86 -data /home/ats/github/Code/java/workspace
+
+!ENTRY org.eclipse.core.resources 2 10035 2011-09-05 06:31:45.288
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
