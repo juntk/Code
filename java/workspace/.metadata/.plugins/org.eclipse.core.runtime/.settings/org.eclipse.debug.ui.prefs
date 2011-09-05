@@ -1,4 +1,5 @@
-#Sun Sep 04 04:05:11 JST 2011
+#Mon Sep 05 11:59:37 JST 2011
+org.eclipse.debug.ui.cancel_launch_with_compile_errors=always
 eclipse.preferences.version=1
 preferredTargets=default\:default|
 org.eclipse.debug.ui.save_dirty_editors_before_launch=always

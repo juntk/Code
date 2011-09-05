@@ -1,0 +1,24 @@
+
+public class java1_25 {
+	public static void main(String[] args) {
+		Factory factory = new Factory();
+		Module module = factory.create();
+		module.hello();
+	}
+}
+
+interface Module {
+	void hello();
+}
+
+class Factory {
+	public Module create() {
+		class Inner implements Module {
+			public void hello() {
+				System.out.println("hello");
+			}
+		}
+		Inner inner = new Inner();
+		return inner;
+	}
+}

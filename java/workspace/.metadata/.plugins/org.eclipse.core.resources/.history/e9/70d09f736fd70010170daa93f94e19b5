@@ -1,0 +1,21 @@
+
+public class java1_26 {
+	public static void main(String[] args) {
+		Outer26.method(3);
+	}
+}
+
+class Outer26 {
+	private static int num = 2;
+	// ローカルインナークラスで外部の変数
+	private final int n2 = 2;
+	
+	public static void method(final int n) {
+		class Inner {
+			public void calc() {
+				System.out.println(num * n2);
+			}
+		}
+		new Inner().calc();
+	}
+}

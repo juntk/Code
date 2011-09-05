@@ -1,0 +1,26 @@
+
+public class java1_27 {
+	public static void main(String[] args) {
+		Module module = new Outer27().create();
+		module.method(30);
+	}
+}
+
+interface Module {
+	void method(int n);
+}
+
+class Outer27 {
+	private Module module = new Module() {
+		private int num;
+		{
+			this.num = 2;
+		}
+		public void method(int n) {
+			System.out.println(num * n);
+		}
+	};
+	public Module create() {
+		return this.module;
+	}
+}

@@ -1,0 +1,21 @@
+
+public class java1_29 {
+	public static void main(String[] args) {
+		Outer29.Inner i1 = new Outer29().new Inner();
+		Outer29.Inner i2 = new Outer29().new Inner();
+		Outer29.Inner i3 = new Outer29().new Inner();
+		System.out.println(i3.getCount());
+	}
+}
+class Outer29 {
+	 class Inner {
+		private static int count = 0;
+		public Inner() {
+			count++;
+		}
+		public int getCount() {
+			return this.count;
+		}
+	}
+	
+}

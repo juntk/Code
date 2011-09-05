@@ -1,0 +1,15 @@
+
+public class java1_20 {
+	public static void main(String[] args) {
+		Outer.Inner inner = Outer().new Inner();
+		inner.hello();
+	}
+}
+
+class Outer {
+	public class Inner {
+		public void hello() {
+			System.out.println("inner");
+		}
+	}
+}

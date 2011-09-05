@@ -1,0 +1,21 @@
+
+public class java1_26 {
+	public static void main(String[] args) {
+		Outer26.method(3);
+	}
+}
+
+class Outer26 {
+	private static int num = 2;
+	// 静的メンバが動的変数を確保すると、
+	// 確保した領域が放置される可能性があるため、
+	// final修飾子を付けて定数化する必要があります。
+	public static void method(int n) {
+		class Inner {
+			public void calc() {
+				System.out.println(num * n);
+			}
+		}
+		new Inner().calc();
+	}
+}
