@@ -1,0 +1,12 @@
+import java.io.Serializable;
+
+public class java3_25 {
+	public static void main(String[] args) {
+	}
+	
+}
+
+public class Foo2 implements Serializable {
+	int num = 1;
+	transient int tmp = 2;
+}

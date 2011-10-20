@@ -1,0 +1,10 @@
+import java.io.Serializable;
+
+public class java3_25 {
+	public static void main(String[] args) {
+	}
+	
+}
+
+public class Test implements Serializable {
+}

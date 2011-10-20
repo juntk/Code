@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Foo2&apos; to &apos;Test&apos;&#x0A;- Original project: &apos;ocj-p&apos;&#x0A;- Original element: &apos;Foo2&apos;&#x0A;- Renamed element: &apos;Test&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Foo2&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{java3_25.java[Foo2" matchStrategy="1" name="Test" qualified="false" references="true" similarDeclarations="false" stamp="1316297685121" textual="false" version="1.0"/>
+</session>

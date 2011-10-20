@@ -1,0 +1,10 @@
+import java.text.DateFormat;
+import java.util.*;
+
+public class java3_29 {
+	public static void main(String[] args) {
+		Date d = new Date();
+		DateFormat df = DateFormat.getInstance();
+		System.out.println(df.format(d));
+	}
+}

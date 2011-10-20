@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class java3_27 {
+	private Scanner s;
+	public java3_27(Scanner a) {
+		this.s = s;
+	}
+	public void filter(String d) {
+		s.useDelimiter(":");
+		while(s.hasNext()) {
+			if(s.hasNextBoolean()) {
+				System.out.println(s.next());
+			} else {
+				s.next();
+			}
+		}
+	}
+	public static void main(String[] args) {
+		Scanner s = new Scanner("X:true:B:false:F:false");
+		new java3_27(s).filter(":");
+	}
+}
