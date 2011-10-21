@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <workbench progressCount="18" version="2.0">
 <workbenchAdvisor/>
 <window height="770" maximized="true" width="1020" x="0" y="24">
+=======
+<workbench progressCount="22" version="2.0">
+<workbenchAdvisor/>
+<window height="770" width="1020" x="72" y="45">
+>>>>>>> b1bba00861d5d6f372437c82ce454840a3d7de8c
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>

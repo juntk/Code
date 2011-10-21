@@ -16,22 +16,33 @@ Command-line arguments:  -os linux -ws gtk -arch x86 -data /home/ats/github/Code
 
 !ENTRY org.eclipse.core.resources 2 10035 2011-09-05 06:31:45.288
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+<<<<<<< HEAD
 !SESSION 2011-09-06 13:04:59.465 -----------------------------------------------
+=======
+!SESSION 2011-09-18 07:03:05.078 -----------------------------------------------
+>>>>>>> b1bba00861d5d6f372437c82ce454840a3d7de8c
 eclipse.buildId=M20100211-1343
 java.version=1.6.0_22
 java.vendor=Sun Microsystems Inc.
 BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=ja_JP
 Command-line arguments:  -os linux -ws gtk -arch x86
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.core.resources 2 10035 2011-09-06 13:05:03.549
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
 !SESSION 2011-09-07 09:15:13.389 -----------------------------------------------
+=======
+!ENTRY org.eclipse.core.resources 2 10035 2011-09-18 07:03:07.469
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2011-09-19 23:58:50.123 -----------------------------------------------
+>>>>>>> b1bba00861d5d6f372437c82ce454840a3d7de8c
 eclipse.buildId=M20100211-1343
 java.version=1.6.0_22
 java.vendor=Sun Microsystems Inc.
 BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=ja_JP
 Command-line arguments:  -os linux -ws gtk -arch x86
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.core.resources 2 10035 2011-09-07 09:15:17.563
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
 !SESSION 2011-09-09 17:27:54.727 -----------------------------------------------
@@ -51,4 +62,7 @@ BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=ja_JP
 Command-line arguments:  -os linux -ws gtk -arch x86
 
 !ENTRY org.eclipse.core.resources 2 10035 2011-09-22 12:42:57.137
+=======
+!ENTRY org.eclipse.core.resources 2 10035 2011-09-19 23:58:53.167
+>>>>>>> b1bba00861d5d6f372437c82ce454840a3d7de8c
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
