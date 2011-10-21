@@ -12,17 +12,19 @@ def avg(l):
 
 print alsa.cards()
 
+pay =512
+
 dev = alsa.PCM(type=alsa.PCM_CAPTURE, mode=alsa.PCM_NORMAL)
 dev.setformat(alsa.PCM_FORMAT_FLOAT_LE)
 dev.setrate(8000)
 dev.setchannels(1)
-dev.setperiodsize(1024)
+dev.setperiodsize(pay)
 plt.ion()
-freqList = np.fft.fftfreq(1024, d=1.0/8000)
+freqList = np.fft.fftfreq(pay, d=1.0/8000)
 while 1:
     l = []
     data = dev.read()
-    d = struct.unpack("1024L",data[1])
+    d = struct.unpack("512L",data[1])
     for i in d:
         l.append(i/1000000000)
     d_ft = np.fft.fft(l)
