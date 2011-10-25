@@ -14,6 +14,7 @@ import threading, thread
 threading.local = thread._local
 print alsa.cards()
 
+#window = (1280,800)
 window = (720,480)
 title = 'title'
 x = threading.local()
@@ -25,6 +26,8 @@ class PGA:
         glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
         glutInitWindowSize(window[0],window[1])
         glutCreateWindow('OpenGL')
+        #glutGameModeString("1280x800:32@60")
+        #glutEnterGameMode()
         glutDisplayFunc(self.loop)
         gluOrtho2D(0,window[0],0,window[1])
         glutKeyboardFunc(self.keyboard)
@@ -52,7 +55,7 @@ class PGA:
 
         # check alsa and add circle
         try:
-           if len(self.circle) < 6:
+           if len(self.circle) < 0:
                 tmp_color = []
                 max_a = 0
                 sum_a = 0
@@ -135,7 +138,7 @@ class PGA:
             
     def keyboard(self, key, x_, y_):
         if key == "\033":
-            exit()
+            glutLeaveGameMode()
         elif key == 'q':
             print key
         else:
@@ -147,6 +150,7 @@ class PGA:
 class WALSA(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
+        self.setDaemon = True
         # ALSA
         self.dev = alsa.PCM(type=alsa.PCM_CAPTURE, mode=alsa.PCM_NORMAL)
         self.dev.setformat(alsa.PCM_FORMAT_FLOAT_LE)
@@ -169,10 +173,10 @@ class WALSA(threading.Thread):
             d_ft = np.fft.fft(l)
             vol = (vol / 1000000000)
             x = [np.sqrt(c.real ** 2 + c.imag ** 2) for c in d_ft]
-            #plt.plot(d_amp)
-            #plt.axis([0, len(d_amp)/2, 0, 500])
-            #plt.draw()
-            #plt.clf()
+            plt.plot(x)
+            plt.axis([0, len(x)/2, 0, 500])
+            plt.draw()
+            plt.clf()
     
 if __name__ == "__main__":
     walsa = WALSA()
