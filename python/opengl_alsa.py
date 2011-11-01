@@ -13,7 +13,7 @@ import threading, thread
 threading.local = thread._local
 print alsa.cards()
 
-full = 1
+full = 0
 if full == 1:
     window = (1280,800)
 else:
@@ -62,40 +62,42 @@ class PGA:
 
     def loop(self):
         global x, vol
-        #print vol
-        glClearColor(0,0,0,0)
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         # check alsa and add circle
         try:
             if len(self.circle) < self.circle_num:
                 tmp_color = []
-                for i in x[10:25]:
-                    if i > 30:
-                        tmp_color = [25, 25, 255, 80]
-                for i in x[26:50]:
-                    if i > 60:
-                        tmp_color = [25, 255, 255, 80]
-                for i in x[51:70]:
-                    if i > 80:
-                        tmp_color = [25, 255, 25, 80]
-                for i in x[71:90]:
+                for i in x[176:250]:
                     if i > 100:
-                        tmp_color = [255, 25, 255, 80]
-                for i in x[91:125]:
-                    if i > 120:
-                        tmp_color = [123, 255, 25, 80]
-                for i in x[126:150]:
-                    if i > 90:
-                        tmp_color = [255, 123, 25, 80]
-                for i in x[151:175]:
-                    if i > 75:
-                        tmp_color = [255, 25, 25, 80]
-                for i in x[176:200]:
-                    if i > 75:
                         tmp_color = [255, 255, 25, 80]
+                for i in x[151:175]:
+                    if i > 100:
+                        tmp_color = [255, 25, 25, 80]
+                for i in x[126:150]:
+                    if i > 100:
+                        tmp_color = [255, 123, 25, 80]
+                for i in x[91:125]:
+                    if i > 100:
+                        tmp_color = [123, 255, 25, 80]
+                for i in x[71:90]:
+                    if i > 150:
+                        tmp_color = [255, 25, 255, 80]
+                for i in x[51:70]:
+                    if i > 200:
+                        tmp_color = [25, 255, 25, 80]
+                for i in x[26:50]:
+                    if i > 300:
+                        tmp_color = [25, 255, 255, 80]
+                for i in x[10:25]:
+                    if i > 400:
+                        tmp_color = [25, 25, 255, 80]
                 if len(tmp_color) == 4:
-                    rad_max = vol * 1
+                    #mac
+                    #rad_max = vol
+                    rad_max = vol / 5
+                    #rad_max = vol / 10
                     if 10 <= rad_max:
                         rad_max = rad_max * 0.5
                     #elif rad_max >= 400:
@@ -108,9 +110,9 @@ class PGA:
                         speed = rad_max / self.c_point 
                     if speed == 0:
                         speed = 1
-                    speed = speed * 5
-                    tmp_dict = {'pos':tmp_pos,'color':tmp_color, 'radius':tmp_radius, 'rad_max':rad_max, 'speed':speed, 'bold':22}
-                    self.circle.append(tmp_dict)
+                    speed = speed * 2.5
+                    #tmp_dict = {'pos':tmp_pos,'color':tmp_color, 'radius':tmp_radius, 'rad_max':rad_max, 'speed':speed, 'bold':22}
+                    self.circle.append({'pos':tmp_pos,'color':tmp_color, 'radius':tmp_radius, 'rad_max':rad_max, 'speed':speed, 'bold':22})
         except:
             pass
        
@@ -142,10 +144,10 @@ class PGA:
     def Circle(self, radius, x, y, bold):
         pai = 3.1415926
         glLineWidth(bold+0.1)
-        for th1 in range(360):
+        for th1 in range(180):
             th2 = th1 + 10.0;
-            th1_rad = th1 / 180.0 * pai
-            th2_rad = th2 / 180.0 * pai
+            th1_rad = th1 / 90.0 * pai
+            th2_rad = th2 / 90.0 * pai
 
             x1 = radius * math.cos(th1_rad)
             y1 = radius * math.sin(th1_rad)

@@ -14,11 +14,8 @@ import threading, thread
 threading.local = thread._local
 print alsa.cards()
 
-full = False
-if full:
-    window = (1280,800)
-else:
-    window = (720,480)
+#window = (1280,800)
+window = (720,480)
 title = 'title'
 x = threading.local()
 vol = threading.local()
@@ -28,18 +25,16 @@ class PGA:
         glutInit()
         glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
         glutInitWindowSize(window[0],window[1])
-        if full:
-            glutGameModeString("1280x800:32@60")
-            glutEnterGameMode()
-        else:
-            glutCreateWindow('OpenGL')
+        glutCreateWindow('OpenGL')
+        #glutGameModeString("1280x800:32@60")
+        #glutEnterGameMode()
         glutDisplayFunc(self.loop)
         gluOrtho2D(0,window[0],0,window[1])
         glutKeyboardFunc(self.keyboard)
         glutIdleFunc(self.repaint)
 
         self.circle = []
-        self.bold = 48
+        self.circle_width = 30
 
 
         glutMainLoop()
@@ -60,7 +55,7 @@ class PGA:
 
         # check alsa and add circle
         try:
-           if len(self.circle) < 8:
+           if len(self.circle) < 0:
                 tmp_color = []
                 max_a = 0
                 sum_a = 0
@@ -93,20 +88,17 @@ class PGA:
                             max_b = i
                             tmp_color = [255, 25, 255, 80]
                 if len(tmp_color) == 4:
-                    rad_max = (vol-1300)
+                    rad_max = (vol-511)* 0.8
                     tmp_pos = [randint(0,window[0]),randint(0,window[1])]
-                    tmp_radius = 1.0
-                    speed = 5
-                    if rad_max < 9:
-                       raise Error,"error" 
-                    if rad_max >= 9 and rad_max <=15:
-                        speed=1.0
-                    if rad_max > 128:
-                        rad_max = 128.0
-                    if rad_max > 64:
-                        speed = 6.0
-                    bold_speed = 1.0 * self.bold / (rad_max/speed)
-                    tmp_dict = {'pos':tmp_pos,'color':tmp_color, 'radius':tmp_radius, 'rad_max':rad_max, 'speed':speed*1, 'bold':self.bold, 'bold_speed':bold_speed}
+                    tmp_radius = 0
+                    self.c_point = 60
+                    if rad_max/self.c_point <= 0:
+                        speed = rad_max%self.c_point
+                    else:
+                        speed = rad_max / self.c_point 
+                    if speed == 0:
+                        speed = 1 
+                    tmp_dict = {'pos':tmp_pos,'color':tmp_color, 'radius':tmp_radius, 'rad_max':rad_max, 'speed':speed*1, 'bold':32}
                     self.circle.append(tmp_dict)
         except:
             pass
@@ -115,7 +107,7 @@ class PGA:
         count = 0
         for c in self.circle:
             c['radius'] = c['radius'] + c['speed']
-            c['bold'] = c['bold']-c['bold_speed']
+            c['bold'] = c['bold']-1.5
             if c['radius'] >= c['rad_max'] or c['bold'] <= 0:
                 self.circle.pop(count)
             else:
@@ -149,7 +141,6 @@ class PGA:
             glutLeaveGameMode()
         elif key == 'q':
             print key
-
         else:
             print key
 
@@ -182,10 +173,10 @@ class WALSA(threading.Thread):
             d_ft = np.fft.fft(l)
             vol = (vol / 1000000000)
             x = [np.sqrt(c.real ** 2 + c.imag ** 2) for c in d_ft]
-            #plt.plot(d_amp)
-            #plt.axis([0, len(d_amp)/2, 0, 500])
-            #plt.draw()
-            #plt.clf()
+            plt.plot(x)
+            plt.axis([0, len(x)/2, 0, 500])
+            plt.draw()
+            plt.clf()
     
 if __name__ == "__main__":
     walsa = WALSA()
