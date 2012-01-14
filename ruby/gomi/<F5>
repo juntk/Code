@@ -1,0 +1,31 @@
+require 'rubygems'
+require 'opengl'
+require 'glut'
+
+class Sample
+    def display()
+        GL.ClearColor(0.0,0.0,0.0,1.0)
+    end
+    
+    def keyboard(key,x,y)
+        print key
+        if key == 33 then exit() end
+    end
+
+    def initialize()
+        GLUT.InitWindowPosition(100,100)
+        GLUT.InitWindowSize(320,240)
+        GLUT.Init
+        GLUT.InitDisplayMode(GLUT::GLUT_DOUBLE | GLUT::GLUT_RGB | GLUT::GLUT_DEPTH)
+        GLUT.CreateWindow("OpenGL")
+
+        GLUT.DisplayFunc(method(:display).to_proc())
+        GLUT.KeyboardFunc(method(:keyboard).to_proc())
+    end
+
+    def start()
+        GLUT.MainLoop()
+    end
+end
+
+Sample.new().start()

@@ -1,0 +1,15 @@
+array = Array.new(5)
+input = ''
+while input != 'end' do
+    input = gets
+    if array[input] > array.length
+        print 'over'
+        next
+    end
+    if array[input] == nil then
+        print 0
+    else
+        print array[input]
+    end
+    array[input]++
+end
