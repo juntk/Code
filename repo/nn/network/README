@@ -1,0 +1,5 @@
+複数のニューロンを組み合わせてネットワークを構成しているもの
+
+./functionXOR.rb
+３つのニューロンモデルを組み合わせることでXOR関数を実現
+http://ipr20.cs.ehime-u.ac.jp/column/neural/chapter5.html#1st
