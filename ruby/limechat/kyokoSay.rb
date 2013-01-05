@@ -42,7 +42,6 @@ class KyokoSay
             dir = @defaultTranscripts + channel
         end
         @pathDir, @pathLog = selectLog(dir)
-        watch()
     end
     def selectLog(dir=nil)
         if dir == nil or dir == '' then
@@ -94,4 +93,5 @@ class KyokoSay
     end
 end
 
-KyokoSay.new
+kyoko = KyokoSay.new
+kyoko.watch
