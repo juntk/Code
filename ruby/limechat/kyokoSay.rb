@@ -13,6 +13,7 @@ class Io
     end
 end
 
+
 class Kyoko
     def self.say(message)
         tmp = message.split(" ",2)
