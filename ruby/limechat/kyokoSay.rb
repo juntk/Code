@@ -1,5 +1,4 @@
 # encoding: utf-8
-require 'tk'
 require 'rubygems'
 require 'fssm'
 require 'diff/lcs'
@@ -22,8 +21,12 @@ class Kyoko
         name = tmp[0]
         body = tmp[1]
         if body != nil and name.split(" ").size == 1 then
-            cmdJP = "say -v kyoko '#{name}さん、#{body}'"
-            system(cmdJP)
+            if body =~ /^[0-9A-Za-z!-\/:-@\[-`{-~ ]+$/ then
+                cmd = "say -v Vicki '#{name} san, #{body}'"
+            else
+                cmd = "say -v kyoko '#{name}さん、#{body}'"
+            end
+            system(cmd)
         end
     end
 end
@@ -37,11 +40,12 @@ class KyokoSay
         else
             dir = @defaultTranscripts + channel
         end
-        @pathLog = selectLog(dir)
+        @pathDir, @pathLog = selectLog(dir)
         watch()
     end
     def selectLog(dir=nil)
         if dir == nil or dir == '' then
+            require 'tk'
             window = TkRoot.new {
                 title 'KyokoSay'
                 withdraw
@@ -53,12 +57,13 @@ class KyokoSay
         Dir.glob(pattern) do |f|
             log = f
         end
-        return log
+        return dir+'/',log
     end
     def watch
         prevLog = Io.fRead(@pathLog)
-        FSSM.monitor(File.dirname(@pathLog), File.basename(@pathLog)) do
+        FSSM.monitor(File.dirname(@pathLog)) do
             update do |basedir, filename|
+                p basedir, filename
                 currLog = Io.fRead("#{basedir}/#{filename}")
                 diffs = Diff::LCS.sdiff(prevLog, currLog)
                 diffs.each do |diff|
@@ -70,7 +75,9 @@ class KyokoSay
                 prevLog = currLog
             end
             create do |basedir, filename|
+                p basedir, filename
                 @pathLog = "#{basedir}/#{filename}"
+                p @pathLog
                 prevLog = []
                 currLog = Io.fRead(@pathLog)
                 diffs = Diff::LCS.sdiff(prevLog, currLog)
