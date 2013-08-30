@@ -4,7 +4,7 @@ require 'twitter'
 
 body = ""
 def post(str)
-    httpauth = Twitter::HTTPAuth.new('ats_tkd','sakura')
+    httpauth = Twitter::HTTPAuth.new('a','s')
     base = Twitter::Base.new(httpauth)
     body = base.follower_ids()
     base.update(str)
