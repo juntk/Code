@@ -5,7 +5,7 @@ class Main
     def initialize()
         @handle = Controller.new()
         @pixiv = Pixiv.new()
-        res = @pixiv.login("nsaccount","sakura")
+        res = @pixiv.login("a","p")
     end
     def check(tag, p)
         res = @pixiv.get("http://www.pixiv.net/search.php?s_mode=s_tag&r18=1&word="+tag+"&p="+p.to_s)
