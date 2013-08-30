@@ -1,4 +1,3 @@
-
 require 'rubygems'
 require 'twitter'
 require 'hpricot'
@@ -7,10 +6,10 @@ require 'open-uri'
 require 'net/http'
 require 'uri'
 
-cToken = 'OViyjuGw7TXEmR53EUAuw'
-cSecret = 'ph8pDFQ5a06l1Bo8Ko6IIiBh1YcMOKk1bQ7FMkks84'
+cToken = 's'
+cSecret = 's'
 
-httpauth = Twitter::HTTPAuth.new('juntk','sakura1')
+httpauth = Twitter::HTTPAuth.new('s','s')
 oAuth = Twitter::OAuth.new(cToken, cSecret)
 
 rToken = oAuth.request_token.token
