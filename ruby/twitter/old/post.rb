@@ -1,4 +1,3 @@
-
 require 'rubygems'
 require 'twitter'
 require 'hpricot'
@@ -82,8 +81,8 @@ auth_p = twbot.getAuthPage(format)
 # He is requesting login
 
 post_d2 = twbot.getPostData()
-post_d2['session[username_or_email]'] = 'juntk'
-post_d2['session[password]'] = 'twittersakura2'
+post_d2['session[username_or_email]'] = 's'
+post_d2['session[password]'] = 't'
 format2 = twbot.getPostFormat(post_d2)
 pin_html = twbot.getAuthPage(format2)
 
