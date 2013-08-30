@@ -68,8 +68,8 @@ class TwBot
     end
 end
 
-cToken = 'OViyjuGw7TXEmR53EUAuw'
-cSecret = 'ph8pDFQ5a06l1Bo8Ko6IIiBh1YcMOKk1bQ7FMkks84'
+cToken = 'a'
+cSecret = 'a'
 
 # Auth
 twbot = TwBot.new(cToken, cSecret)
